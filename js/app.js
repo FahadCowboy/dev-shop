@@ -30,8 +30,8 @@ const showProducts = (products) => {
         </div>
         <div class="card-footer card-footer-modify">
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="btn bg-purple-500 hover:bg-purple-600 text-white">Add to cart</button>
-            <button type="button" id="details-btn" class="btn bg-green-500 hover:bg-green-600 text-white">Details</button>
+            <button type="button" onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="btn bg-purple-600 hover:bg-purple-500 text-white">Add to cart</button>
+            <button type="button" onclick="detailsModal(${product.id})" id="details-btn" class="btn bg-green-600 hover:bg-green-500 text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Details</button>
             </div>
         </div>
       </div>
@@ -97,4 +97,17 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+
+// This function is for showing product details in modal
+
+const detailsModal = productId => {
+  const url = `https://fakestoreapi.com/products/${productId}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then(data => {
+      const modalBody = document.getElementById('modal-body')
+      const div = document.createElement('div')
+        console.log(modalBody)
+    });
+}
 
