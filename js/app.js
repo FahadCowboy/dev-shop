@@ -24,7 +24,9 @@ const showProducts = (products) => {
         <div class="card-body">
           <h5 class="card-title text-2xl">${product.title}</h5>
           <p class="card-text">Category: ${product.category}</p>
-          <p class="card-text">Price: $ ${product.price}</p>
+          <p class="card-text">Total ${product.rating.count} Ratings</p>
+          <p class="card-text">Average Rating: ${product.rating.rate}</p>
+          <p class="card-text text-xl font-semibold mt-3">Price: $ ${product.price}</p>
         </div>
         <div class="card-footer card-footer-modify">
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
