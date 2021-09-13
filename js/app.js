@@ -15,10 +15,6 @@ const showProducts = (products) => {
     const div = document.createElement("div");
     div.classList = `product card-group`;
     div.innerHTML = `
-
-
-
-
       <div class="card py-4">
         <img src="${product.image}" class="card-img-top w-50 mx-auto h-48" alt="...">
         <div class="card-body">
@@ -46,14 +42,17 @@ const addToCart = (id, price) => {
   //only price amount will be updated by clicking 'add to cart' button.
   updatePrice("price", price);
 
+  // Here tax and delivary charge is being updated
   updateTaxAndCharge();
 
   //Total prodact will be updated by addin 1 after each click on 'add to cart' button.
   document.getElementById("total-Products").innerText = count;
 
+  // Thid function call will update total cost field
   updateTotal()
 };
 
+// This function is to get amount
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
@@ -99,7 +98,6 @@ const updateTotal = () => {
 };
 
 // This function is for showing product details in modal
-
 const detailsModal = productId => {
   const modalBody = document.getElementById('modal-body')
   modalBody.textContent = ''
@@ -107,14 +105,14 @@ const detailsModal = productId => {
   fetch(url)
     .then((response) => response.json())
     .then(data => {
-      
+
       const div = document.createElement('div')
       console.log(data)
       div.innerHTML = `
-        <img src="${data.image}" class="w-40 mx-auto" alt="">
+        <img src="${data.image}" class="w-40 mx-auto mb-4" alt="">
         <div>
           <h5 class="mt-2 text-2xl font-semibold">${data.title}</h5>
-          <p class="mt-2"><span class="font-bold">Description:</span> ${data.description}</p>
+          <p class="mt-2">${data.description}</p>
           <p class="mt-2"><span class="font-bold">Category:</span> ${data.title}</p>
           <p class="mt-2"><span class="font-bold">Price:</span> ${data.price} USD</p>
           <p class="mt-2"><span class="font-bold">Total Ratings:</span> ${data.rating.count}</p>
