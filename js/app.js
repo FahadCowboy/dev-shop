@@ -101,13 +101,27 @@ const updateTotal = () => {
 // This function is for showing product details in modal
 
 const detailsModal = productId => {
+  const modalBody = document.getElementById('modal-body')
+  modalBody.textContent = ''
   const url = `https://fakestoreapi.com/products/${productId}`;
   fetch(url)
     .then((response) => response.json())
     .then(data => {
-      const modalBody = document.getElementById('modal-body')
+      
       const div = document.createElement('div')
-        console.log(modalBody)
+      console.log(data)
+      div.innerHTML = `
+        <img src="${data.image}" class="w-40 mx-auto" alt="">
+        <div>
+          <h5 class="mt-2 text-2xl font-semibold">${data.title}</h5>
+          <p class="mt-2"><span class="font-bold">Description:</span> ${data.description}</p>
+          <p class="mt-2"><span class="font-bold">Category:</span> ${data.title}</p>
+          <p class="mt-2"><span class="font-bold">Price:</span> ${data.price} USD</p>
+          <p class="mt-2"><span class="font-bold">Total Ratings:</span> ${data.rating.count}</p>
+          <p class="mt-2"><span class="font-bold">Average Rating:</span> ${data.rating.rate}</p>
+        </div>
+      `
+      modalBody.appendChild(div)
     });
 }
 
