@@ -13,12 +13,12 @@ const showProducts = (products) => {
   for (const product of allProducts) {
     const image = product.images;
     const div = document.createElement("div");
-    div.classList = `product card-group`;
+    div.classList = `col`;
     div.innerHTML = `
-      <div class="card py-4">
+      <div id="card" class="card h-100 py-3">
         <img src="${product.image}" class="card-img-top w-50 mx-auto h-48" alt="...">
         <div class="card-body">
-          <h5 class="card-title text-2xl">${product.title}</h5>
+          <h5 class="card-title text-xl font-semibold">${product.title}</h5>
           <p class="card-text">Category: ${product.category}</p>
           <p class="card-text">Total ${product.rating.count} Ratings</p>
           <p class="card-text">Average Rating: ${product.rating.rate}</p>
@@ -28,7 +28,7 @@ const showProducts = (products) => {
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <button type="button" onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="btn bg-purple-600 hover:bg-purple-500 text-white">Add to cart</button>
             <button type="button" onclick="detailsModal(${product.id})" id="details-btn" class="btn bg-green-600 hover:bg-green-500 text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Details</button>
-            </div>
+          </div>
         </div>
       </div>
       `;
@@ -111,12 +111,12 @@ const detailsModal = productId => {
       div.innerHTML = `
         <img src="${data.image}" class="w-40 mx-auto mb-4" alt="">
         <div>
-          <h5 class="mt-2 text-2xl font-semibold">${data.title}</h5>
+          <h5 class="mt-2 text-xl font-semibold text-purple-800">${data.title}</h5>
           <p class="mt-2">${data.description}</p>
-          <p class="mt-2"><span class="font-bold">Category:</span> ${data.title}</p>
-          <p class="mt-2"><span class="font-bold">Price:</span> ${data.price} USD</p>
-          <p class="mt-2"><span class="font-bold">Total Ratings:</span> ${data.rating.count}</p>
-          <p class="mt-2"><span class="font-bold">Average Rating:</span> ${data.rating.rate}</p>
+          <p class="mt-2"><span class="font-bold text-purple-900">Price:</span> ${data.price} USD</p>
+          <p class="mt-2"><span class="font-bold text-purple-900">Category:</span> ${data.title}</p>
+          <p class="mt-2"><span class="font-bold text-purple-900">Total Ratings:</span> ${data.rating.count}</p>
+          <p class="mt-2"><span class="font-bold text-purple-900">Average Rating:</span> ${data.rating.rate}</p>
         </div>
       `
       modalBody.appendChild(div)
